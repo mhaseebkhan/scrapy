@@ -2,10 +2,10 @@ class Url < ApplicationRecord
   include Parser
 
   has_many :tags
+  attr_accessor :data
 
   validates :url, presence: true, uniqueness: true
   after_save :get_tags
-  attr_accessor :data
 
   def get_tags
     parse(self.data)
